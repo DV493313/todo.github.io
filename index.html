@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+   <div class="container">
+       <h1><b>TO DO </b></h1>
+       <input type="text" class="txttb" placehoalder="Add a task">
+       <div class="notcomp">
+           <h3>Not Completed</h3>
+           <!-- <div class="task">
+               task
+               <i class="fas fa-trash-alt"></i>
+               <i class="fas fa-check"></i>
+           </div> -->
+       </div>
+
+        <div class="comp">
+            <h3>Complated</h3>
+     
+      
+
+        </div>
+
+       </div>
+   </div>
+   <script type="text/javascript">
+   $(".txttb").on("keyup",function(e){
+       //13 enter Button
+       if(e.keyCode==13 && $(".txttb").val() !="")
+      {
+          var task= $("<div class='task'></div>").text($(".txttb").val());
+          var del=$("<i class='fas fa-trash-alt'></i>").click(function(){
+              var p =$(this).parent();
+              p.fadeOut(function(){
+                  p.remove();
+              })
+          });
+          var check=$("<i class='fas fa-check'></i>").click(function(){
+              var p = $(this).parent();
+              p.fadeOut(function(){
+                  $(".comp").append(p);
+                  p.fadeIn();
+              });
+              $(this).remove();
+          });
+          task.append(del,check);
+          $(".notcomp").append(task);
+          //to clear the input
+          $(".txttb").val("");
+      }
+   });
+
+
+   </script>
+</body>
+</html>
